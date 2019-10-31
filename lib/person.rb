@@ -1,69 +1,76 @@
+require 'pry'
 
-class Person 
+class Person
 
     attr_accessor :bank_account
-    attr_reader :happy_points, :hygiene_points
+    attr_reader :happiness, :hygiene, :name
 
     def initialize(name)
-        @name = name 
-        @bank_account = 25 
-        @happy_points = 8 
-        @hygiene_points = 8
-    end 
+        @name = name
+        @bank_account = 25
+        @happiness = 8
+        @hygiene = 8
+    end
 
-    
-    def happy_points=(amount)
-        @happy_points += amount
 
-        if @happy_points > 10
-            @happy_points = 10
+    def happiness= (amount)
+        @happiness = amount
 
-        elsif @happy_points < 0
-              @happy_points = 0 
-        end 
+          # binding.pry
+        if @happiness > 10
+          # binding.pry
+            @happiness = 10
 
-    end 
+        elsif @happiness < 0
+              @happiness = 0
+        end
 
-    def hygiene_points=(amount)
-        
-        @hygiene_points += amount
+          # binding.pry
+    end
 
-        if @hygiene_points > 10
-            @hygiene_points = 10
+    def hygiene= (amount)
 
-        elsif @hygiene_points < 0
-              @hygiene_points = 0 
-        end 
-          
-    end 
+        @hygiene = amount
+
+        if @hygiene > 10
+            @hygiene = 10
+
+        elsif @hygiene < 0
+              @hygiene = 0
+        end
+
+    end
 
     def clean?
-         self.hygiene_points > 7 
-    end 
+         self.hygiene > 7
+    end
 
     def happy?
-        self.happy_points > 7 
-    end 
+        self.happiness > 7
+    end
 
     def get_paid(salary_amount)
         self.bank_account += salary_amount
         "all about the benjamins"
-    end 
+    end
 
-    def take_bath 
-        self.hygiene_points += 1
+    def take_bath
+        self.hygiene += 4
         "♪ Rub-a-dub just relaxing in the tub ♫"
-    end 
+    end
 
     def work_out
-        self.happy += 2
-        self.hygiene_points -= 3
+        self.happiness += 2
+        self.hygiene -= 3
         "♪ another one bites the dust ♫"
-    end 
+    end
 
     def call_friend(friend)
-        self.happy_points += 3
-        friend.happy_points += 3  
-    end 
+        self.happiness += 3
+        friend.happiness += 3
+        "Hi #{friend.name}! It's #{self.name}. How are you?"
+    end
 
-end 
+
+
+end
